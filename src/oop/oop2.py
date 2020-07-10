@@ -4,20 +4,30 @@
 # object is constructed.
 
 class GroundVehicle():
-    def __init__(self, num_wheels):
+    def __init__(self, num_wheels=4):
         self.num_wheels = num_wheels
+        return None
 
-    # TODO
-
+    def drive(self):
+        return "vroooom"
 
 # Subclass Motorcycle from GroundVehicle.
 #
-# Make it so when you instantiate a Motorcycle, it automatically sets the number
-# of wheels to 2 by passing that to the constructor of its superclass.
+# Make it so when you instantiate a Motorcycle, it automatically sets the
+# number of wheels to 2 by passing that to the constructor of its superclass.
 #
 # Override the drive() method in Motorcycle so that it returns "BRAAAP!!"
 
-# TODO
+
+class Motorcycle(GroundVehicle):
+    """Choppy time."""
+    def __init__(self):
+        super().__init__(num_wheels=2)
+        return None
+
+    def drive(self):
+        return "BRAAAP!!"
+
 
 vehicles = [
     GroundVehicle(),
@@ -29,4 +39,5 @@ vehicles = [
 
 # Go through the vehicles list and print the result of calling drive() on each.
 
-# TODO
+for vic in vehicles:
+    print(vic.drive())
