@@ -7,6 +7,9 @@ class City:
         self.lat = lat
         self.lon = lon
 
+    def __repr__(self):
+        return f"<City: {self.name}, {self.lat}, {self.lon}>"
+
 
 # We have a collection of US cities with population over 750,000 stored in the
 # file "cities.csv". (CSV stands for "comma-separated values".)
@@ -30,7 +33,7 @@ def cityreader(cities=[]):
         next(reader)
 
         for row in reader:
-            city = City(row[0], row[3], row[4])
+            city = City(row[0], float(row[3]), float(row[4]))
             cities.append(city)
 
     return cities
@@ -95,9 +98,9 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities):
 
     within = [
         city for city in cities if
-        (float(city.lat) >= first_set[0]) and
-        (float(city.lat) <= second_set[0]) and
-        (float(city.lon) >= first_set[1]) and
-        (float(city.lon) <= second_set[1])
+        (float(city.lat) >= upper_right[0]) and
+        (float(city.lat) <= lower_left[0]) and
+        (float(city.lon) >= upper_right[1]) and
+        (float(city.lon) <= lower_left[1])
     ]
     return within
